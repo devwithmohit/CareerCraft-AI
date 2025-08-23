@@ -102,6 +102,7 @@
 // }
 
 import { Button } from "@/components/ui/button";
+import { HeroSection } from '@/components/sections/hero-section'
 import {
   Card,
   CardContent,
@@ -112,10 +113,18 @@ import {
 import { ArrowRight, Brain, FileText, Target, Users } from "lucide-react";
 
 import Link from "next/link";
+import { FeaturesSection } from "@/components/sections/features-section";
+
 
 export default function HomePage() {
   return (
+    
     <div className="min-h-screen min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+   <div className="min-h-screen">
+      <HeroSection />
+      <FeaturesSection />
+      {/* Future sections will go here */}
+    </div>
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">

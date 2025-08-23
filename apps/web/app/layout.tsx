@@ -34,6 +34,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import React from "react";
 const inter = Inter({ subsets: ["latin"] });
@@ -50,12 +52,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+       <ThemeProvider>
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
 
 // 🧱 4. Root Layout Component
 // export default function RootLayout({
@@ -63,7 +70,6 @@ export default function RootLayout({
 // }: {
 //   children: React.ReactNode;
 // }) {
-
 
 // This is the main layout function.
 

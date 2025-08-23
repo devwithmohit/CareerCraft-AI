@@ -1,4 +1,5 @@
 "use client ";
+import * as React from 'react'
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -9,7 +10,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = [
     { href: "/resume-analysis", label: "Resume Analysis" },
-    { href: "/resume-buildre", label: "Resume Analysis" },
+    { href: "/resume-builder", label: "Resume Analysis" },
     { href: "/job-search", label: "Job Search " },
     { href: "/dashboard-", label: " DashBoard" },
   ];

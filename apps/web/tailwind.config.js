@@ -6,8 +6,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",      // pages directory
     "./components/**/*.{js,ts,jsx,tsx}", // components
   ],
+  
   theme: {
     extend: {},
   },
   plugins: [require("tailwindcss-animate")],
 };
+
+  // "dev": "next dev --turbopack --port 3000",
