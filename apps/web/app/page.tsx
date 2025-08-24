@@ -103,6 +103,12 @@
 
 import { Button } from "@/components/ui/button";
 import { HeroSection } from '@/components/sections/hero-section'
+import { FeaturesSection } from "@/components/sections/features-section";
+import { StatsSection } from '@/components/sections/stats-section'
+import { TestimonialsSection } from '@/components/sections/testimonials-section'
+import { CTASection } from '@/components/sections/cta-sections'
+import { FAQSection } from '@/components/sections/faq-section'
+
 import {
   Card,
   CardContent,
@@ -111,9 +117,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowRight, Brain, FileText, Target, Users } from "lucide-react";
-
+import { HeroGradient, FeatureGradient, TestimonialGradient } from '@/components/shared/gradient-background'
 import Link from "next/link";
-import { FeaturesSection } from "@/components/sections/features-section";
 
 
 export default function HomePage() {
@@ -121,8 +126,34 @@ export default function HomePage() {
     
     <div className="min-h-screen min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
    <div className="min-h-screen">
-      <HeroSection />
+      {/* <HeroSection />
       <FeaturesSection />
+      <StatsSection/>
+      <TestimonialsSection/>
+       <CTASection />
+      <FAQSection /> */}
+      <HeroGradient>
+        <HeroSection />
+      </HeroGradient>
+
+      {/* Features Section */}
+      <FeatureGradient>
+        <FeaturesSection />
+      </FeatureGradient>
+
+      {/* Stats Section with animated counters */}
+      <StatsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialGradient>
+        <TestimonialsSection />
+      </TestimonialGradient>
+
+      {/* CTA Section with pricing and final call-to-action */}
+      <CTASection />
+
+      {/* FAQ Section */}
+      <FAQSection />
       {/* Future sections will go here */}
     </div>
       <section className="container mx-auto px-4 py-20 text-center">

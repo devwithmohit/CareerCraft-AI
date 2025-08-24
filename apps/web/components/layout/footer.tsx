@@ -40,7 +40,7 @@ export function Footer() {
   }
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/careercraft-ai', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/devwithmohit/careercraft-ai', label: 'GitHub' },
     { icon: Twitter, href: 'https://twitter.com/careercraft_ai', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/company/careercraft-ai', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:hello@careercraft.ai', label: 'Email' },
