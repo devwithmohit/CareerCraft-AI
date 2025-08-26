@@ -117,7 +117,7 @@ const isActive = (href:string)=>{
 const NavItem = ({item, showBadge}:{
      item: typeof mainNavItems[0],
     showBadge?: boolean
-})=>{
+})=>(
     <Link href={item.href}>
       <div className={cn(
         "flex items-center space-x-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800",
@@ -151,7 +151,7 @@ const NavItem = ({item, showBadge}:{
         )}
       </div>
     </Link>
-}
+)
 
     return(
          <div className={cn(

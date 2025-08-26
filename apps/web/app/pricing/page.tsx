@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -328,7 +328,7 @@ export default function PricingPage() {
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {features.map((category, categoryIndex) => (
-                      <>
+                          <Fragment key={`category-group-${categoryIndex}`}>
                         <tr key={`category-${categoryIndex}`} className="bg-gray-25">
                           <td colSpan={4} className="px-6 py-3 text-sm font-semibold text-gray-900 bg-gray-100">
                             {category.category}
@@ -374,7 +374,7 @@ export default function PricingPage() {
                             </td>
                           </tr>
                         ))}
-                      </>
+                      </Fragment>
                     ))}
                   </tbody>
                 </table>

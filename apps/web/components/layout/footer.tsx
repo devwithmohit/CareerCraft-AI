@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import Link from 'next/link'
-import { Brain, Github, Twitter, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { Brain,Sparkles, Github, Twitter, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
@@ -70,7 +70,19 @@ export function Footer() {
               Empowering careers with AI-driven resume optimization, intelligent job matching, 
               and personalized career insights.
             </p>
-
+                        <div className="flex space-x-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="text-gray-400 hover:text-blue-600 transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
             {/* Contact Info */}
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
@@ -85,7 +97,7 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 <span>hello@careercraft.ai</span>
               </div>
-            </div>
+            {/* </div> */}
           </div>
 
           {/* Product Links */}
@@ -220,5 +232,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+          
   )
 }

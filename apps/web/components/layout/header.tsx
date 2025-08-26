@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu, Brain, X, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
+import { usePathname } from 'next/navigation'
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-
+  const pathname = usePathname()
   // Handle scroll effect
   React.useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +19,16 @@ export function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
+  
+type NavLink = { href: string; label: string }
+type NavDropdown = { label: string; items: NavLink[] }
+type NavItem = NavLink | NavDropdown
+  //   const navigation = [
+  //   { name: 'Home', href: '/' },
+  //   { name: 'About', href: '/about' },
+  //   { name: 'Pricing', href: '/pricing' },
+  //   { name: 'Contact', href: '/contact' },
+  // ]
   const navItems = [
     {
       label: 'Features',
@@ -34,7 +43,11 @@ export function Header() {
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]
+  const isActive = (href: string) => pathname === href
+const isDropdown = (i: NavItem): i is NavDropdown => 'items' in i
 
+ const featureLinks = (navItems.find(isDropdown)?.items) ?? []
+  const topLinks = navItems.filter((i): i is NavLink => !isDropdown(i))
   return (
     <header 
       className={cn(
