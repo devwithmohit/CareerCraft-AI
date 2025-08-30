@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card'
 import { SparklesCore } from '@/components/ui/sparkles'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
+import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
@@ -291,7 +292,7 @@ interface ScoreDisplayProps {
 export default function ScoreDisplay({
   overallScore = 84,
   fileName = "john-doe-resume.pdf",
-  analysisDate = "",
+  analysisDate = new Date().toISOString(),
   onReanalyze,
   onDownloadReport,
   onShareReport,
@@ -299,6 +300,9 @@ export default function ScoreDisplay({
   className
 }: ScoreDisplayProps) {
   const [showSparkles, setShowSparkles] = useState(false)
+  const formattedDate = useMemo(() => {
+    return new Date(analysisDate).toLocaleDateString('en-US'); // Forces consistent format
+  }, [analysisDate]);
 
   useEffect(() => {
     // Show sparkles for high scores
@@ -346,7 +350,7 @@ export default function ScoreDisplay({
           Analysis for <Badge variant="outline" className="mx-1">{fileName}</Badge>
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-          Analyzed on {analysisDate}
+          Analyzed on {formattedDate}
         </p>
       </div>
 
