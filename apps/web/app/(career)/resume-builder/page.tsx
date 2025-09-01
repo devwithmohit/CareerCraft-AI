@@ -5,7 +5,9 @@ import ResumePreview from "@/components/resume/builder/preview";
 import ResumeToolbar from "@/components/resume/builder/toolbar";
 import ResumeEditor from "@/components/resume/builder/editor";
 import ExperienceSection from "@/components/resume/builder/sections/experience";
-import PersonalInfoSection from "@/components/resume/builder/sections/personal-info"
+import PersonalInfoSection from "@/components/resume/builder/sections/personal-info";
+import SummarySection from "@/components/resume/builder/sections/summary";
+import SkillsSection from "@/components/resume/builder/sections/skills";
 // Import formatting types from toolbar
 interface FormattingOptions {
   fontSize: number;
@@ -52,7 +54,12 @@ interface ResumeData {
     technologies?: string[];
     teamSize?: number;
     salary?: string;
-    workType?: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
+    workType?:
+      | "full-time"
+      | "part-time"
+      | "contract"
+      | "internship"
+      | "freelance";
     remote?: boolean;
   }[];
   education: any[];
@@ -103,37 +110,41 @@ export default function ResumeBuilderPage() {
   // ✅ Add resume data state
   const [resumeData, setResumeData] = useState<ResumeData>({
     personalInfo: {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@email.com',
-      phone: '+1 (555) 123-4567',
-      location: 'San Francisco, CA',
-      linkedin: 'linkedin.com/in/johndoe',
-      website: 'johndoe.dev',
-      title: 'Senior Software Engineer'
+      firstName: "John",
+      lastName: "Doe",
+      email: "john.doe@email.com",
+      phone: "+1 (555) 123-4567",
+      location: "San Francisco, CA",
+      linkedin: "linkedin.com/in/johndoe",
+      website: "johndoe.dev",
+      title: "Senior Software Engineer",
     },
-    summary: 'Experienced software engineer with 8+ years of experience in full-stack development.',
+    summary:
+      "Experienced software engineer with 8+ years of experience in full-stack development.",
     experience: [
       {
-        id: '1',
-        company: 'Tech Corp',
-        position: 'Senior Software Engineer',
-        location: 'San Francisco, CA',
-        startDate: '2021-01',
-        endDate: '',
+        id: "1",
+        company: "Tech Corp",
+        position: "Senior Software Engineer",
+        location: "San Francisco, CA",
+        startDate: "2021-01",
+        endDate: "",
         current: true,
-        description: '• Led development of microservices architecture serving 10M+ users',
-        achievements: ['Led development of microservices architecture serving 10M+ users'],
-        technologies: ['JavaScript', 'TypeScript', 'React', 'Node.js'],
+        description:
+          "• Led development of microservices architecture serving 10M+ users",
+        achievements: [
+          "Led development of microservices architecture serving 10M+ users",
+        ],
+        technologies: ["JavaScript", "TypeScript", "React", "Node.js"],
         teamSize: 8,
-        salary: '$120k - $150k',
-        workType: 'full-time',
-        remote: false
-      }
+        salary: "$120k - $150k",
+        workType: "full-time",
+        remote: false,
+      },
     ],
     education: [],
-    skills: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'AWS'],
-    certifications: []
+    skills: ["JavaScript", "TypeScript", "React", "Node.js", "Python", "AWS"],
+    certifications: [],
   });
 
   // Handlers
@@ -237,15 +248,25 @@ export default function ResumeBuilderPage() {
       */}
       <div className="p-6">
         <PersonalInfoSection
-    data={resumeData.personalInfo}
-    onUpdate={(personalInfo) => setResumeData(prev => ({ ...prev, personalInfo }))}
-  />
+          data={resumeData.personalInfo}
+          onUpdate={(personalInfo) =>
+            setResumeData((prev) => ({ ...prev, personalInfo }))
+          }
+        />
         <ExperienceSection
           experiences={resumeData.experience}
           onUpdate={(experiences) =>
             setResumeData((prev) => ({ ...prev, experience: experiences }))
           }
         />
+        <SummarySection
+  summary={resumeData.summary}
+  onUpdate={(summary) => setResumeData(prev => ({ ...prev, summary }))}
+/>
+<SkillsSection
+  skills={resumeData.skills}
+  onUpdate={(skills) => setResumeData(prev => ({ ...prev, skills }))}
+/>
       </div>
     </div>
   );
