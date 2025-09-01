@@ -1,5 +1,4 @@
 "use client"
-
 import React from 'react'
 import ActivityFeed from '@/components/dashboard/activity-feed'
 import { MetricsGrid } from '@/components/dashboard/metric-card'
@@ -103,5 +102,11 @@ export default function DashboardPage(): JSX.Element {
         />
       </div>
     </div>
-  )
+
+  
+)
+                  
+         
+          
+  
 }
