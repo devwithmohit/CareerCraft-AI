@@ -19,10 +19,6 @@ import {
   MapPin,
   Linkedin,
   Globe,
-  Calendar,
-  Building,
-  GraduationCap,
-  Award,
   Star,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -394,18 +390,7 @@ export default function ResumePreview({
     setIsFullscreen(!isFullscreen);
   };
 
-  // const renderTemplate = () => {
-  //   switch (template) {
-  //     case "modern-gradient":
-  //     case "modern-sidebar":
-  //       return <ModernTemplate data={resumeData} zoom={zoom} />;
-  //     case "ats-professional":
-  //     case "ats-minimal":
-  //     case "ats-executive":
-  //     default:
-  //       return <ATSProfessionalTemplate data={resumeData} zoom={zoom} />;
-  //   }
-  // };
+
   const renderTemplate = () => {
   switch (template) {
     case "ats-optimized":
