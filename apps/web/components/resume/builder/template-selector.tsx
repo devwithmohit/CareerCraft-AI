@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
-  FileText, 
-  Palette, 
-  Star, 
-  Eye, 
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  FileText,
+  Palette,
+  Star,
+  Eye,
   Download,
   Zap,
   Award,
@@ -19,141 +25,155 @@ import {
   Heart,
   TrendingUp,
   Shield,
-  CheckCircle
-} from 'lucide-react'
-import { cn } from '@/lib/utils'
+  CheckCircle,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
-// Template Data
+// Template Data - UPDATED WITH YOUR PNG FILES
 const resumeTemplates = {
   ats: [
     {
-      id: 'ats-professional',
-      name: 'ATS Professional',
-      description: 'Clean, professional layout optimized for ATS systems',
-      category: 'ATS Optimized',
-      features: ['ATS Friendly', 'Clean Layout', 'Standard Fonts'],
+      id: "ats-professional",
+      name: "ATS Professional",
+      description: "Clean, professional layout optimized for ATS systems",
+      category: "ATS Optimized",
+      features: ["ATS Friendly", "Clean Layout", "Standard Fonts"],
       rating: 4.9,
       downloads: 15420,
-      preview: '/templates/ats-professional.png',
-      color: 'blue',
+      preview: "/templates/ats-optimized-resume.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/ats-optimized-resume.pdf", // ← YOUR PDF FILE
+      color: "blue",
       recommended: true,
-      industry: ['Technology', 'Finance', 'Healthcare']
+      industry: ["Technology", "Finance", "Healthcare"],
     },
     {
-      id: 'ats-minimal',
-      name: 'ATS Minimal',
-      description: 'Simple, clean design that passes through any ATS',
-      category: 'ATS Optimized',
-      features: ['Minimal Design', 'High Compatibility', 'Easy to Read'],
+      id: "ats-minimal",
+      name: "ATS Minimal",
+      description: "Simple, clean design that passes through any ATS",
+      category: "ATS Optimized",
+      features: ["Minimal Design", "High Compatibility", "Easy to Read"],
       rating: 4.8,
       downloads: 12890,
-      preview: '/templates/ats-minimal.png',
-      color: 'gray',
+      preview: "/templates/front-end-regenerate-resume-1.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/front-end-regenerate-resume.pdf", // ← YOUR PDF FILE
+      color: "gray",
       recommended: false,
-      industry: ['All Industries']
+      industry: ["All Industries"],
     },
     {
-      id: 'ats-executive',
-      name: 'ATS Executive',
-      description: 'Professional template for senior positions',
-      category: 'ATS Optimized',
-      features: ['Executive Style', 'ATS Compatible', 'Premium Look'],
+      id: "ats-executive",
+      name: "ATS Executive",
+      description: "Professional template for senior positions",
+      category: "ATS Optimized",
+      features: ["Executive Style", "ATS Compatible", "Premium Look"],
       rating: 4.7,
       downloads: 8650,
-      preview: '/templates/ats-executive.png',
-      color: 'indigo',
+      preview:
+        "/templates/Accounting-Executive-Editable-Resume-Template-Download-in-docx-11-1.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/Accounting-Executive-Editable.pdf", // ← YOUR PDF FILE
+      color: "indigo",
       recommended: false,
-      industry: ['Executive', 'Management', 'Consulting']
-    }
+      industry: ["Executive", "Management", "Consulting"],
+    },
   ],
   modern: [
     {
-      id: 'modern-gradient',
-      name: 'Modern Gradient',
-      description: 'Contemporary design with subtle gradients',
-      category: 'Modern',
-      features: ['Modern Design', 'Color Accents', 'Visual Appeal'],
+      id: "modern-gradient",
+      name: "Modern Gradient",
+      description: "Contemporary design with subtle gradients",
+      category: "Modern",
+      features: ["Modern Design", "Color Accents", "Visual Appeal"],
       rating: 4.6,
       downloads: 9870,
-      preview: '/templates/modern-gradient.png',
-      color: 'purple',
+      preview:
+        "/templates/Software-Engineer-Editable-Resume-Template-Download-in-docx-20.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/Software-Engineer-Editable.pdf", // ← YOUR PDF FILE
+      color: "purple",
       recommended: false,
-      industry: ['Design', 'Marketing', 'Creative']
+      industry: ["Design", "Marketing", "Creative"],
     },
     {
-      id: 'modern-sidebar',
-      name: 'Modern Sidebar',
-      description: 'Two-column layout with sidebar for skills',
-      category: 'Modern',
-      features: ['Sidebar Layout', 'Skill Highlights', 'Modern Typography'],
+      id: "modern-sidebar",
+      name: "Modern Sidebar",
+      description: "Two-column layout with sidebar for skills",
+      category: "Modern",
+      features: ["Sidebar Layout", "Skill Highlights", "Modern Typography"],
       rating: 4.5,
       downloads: 7650,
-      preview: '/templates/modern-sidebar.png',
-      color: 'green',
+      preview:
+        "/templates/Mechatronics-Engineer-Editable-Resume-Template-Download-in-docx-5-1.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/Mechatronics-Engineer-Editable.pdf", // ← YOUR PDF FILE
+      color: "green",
       recommended: false,
-      industry: ['Technology', 'Design', 'Marketing']
-    }
+      industry: ["Technology", "Design", "Marketing"],
+    },
   ],
   creative: [
     {
-      id: 'creative-portfolio',
-      name: 'Creative Portfolio',
-      description: 'Perfect for designers and creative professionals',
-      category: 'Creative',
-      features: ['Portfolio Section', 'Visual Elements', 'Creative Layout'],
+      id: "creative-portfolio",
+      name: "Creative Portfolio",
+      description: "Perfect for designers and creative professionals",
+      category: "Creative",
+      features: ["Portfolio Section", "Visual Elements", "Creative Layout"],
       rating: 4.4,
       downloads: 5430,
-      preview: '/templates/creative-portfolio.png',
-      color: 'pink',
+      preview:
+        "/templates/Fashion-Designer-Editable-Resume-Template-Download-in-docx-14-1.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/Fashion-Designer-Editable.pdf", // ← YOUR PDF FILE
+      color: "pink",
       recommended: false,
-      industry: ['Design', 'Art', 'Photography']
+      industry: ["Design", "Art", "Photography"],
     },
     {
-      id: 'creative-timeline',
-      name: 'Creative Timeline',
-      description: 'Timeline-based layout for career progression',
-      category: 'Creative',
-      features: ['Timeline Design', 'Visual Story', 'Unique Layout'],
+      id: "creative-timeline",
+      name: "Creative Timeline",
+      description: "Timeline-based layout for career progression",
+      category: "Creative",
+      features: ["Timeline Design", "Visual Story", "Unique Layout"],
       rating: 4.3,
       downloads: 4290,
-      preview: '/templates/creative-timeline.png',
-      color: 'orange',
+      preview:
+        "/templates/Lawyer-Editable-Resume-Template-Download-in-docx-18.png", // ← YOUR PNG FILE
+      pdfUrl: "/templates/Lawyer-Editable.pdf", // ← YOUR PDF FILE
+      color: "orange",
       recommended: false,
-      industry: ['Creative', 'Media', 'Entertainment']
-    }
-  ]
-}
+      industry: ["Creative", "Media", "Entertainment"],
+    },
+  ],
+};
 
-// Template Card Component
-const TemplateCard = ({ 
-  template, 
-  isSelected, 
-  onSelect, 
-  onPreview 
+// Template Card Component - UPDATED WITH PNG PREVIEW
+const TemplateCard = ({
+  template,
+  isSelected,
+  onSelect,
+  onPreview,
 }: {
-  template: typeof resumeTemplates.ats[0]
-  isSelected: boolean
-  onSelect: () => void
-  onPreview: () => void
+  template: (typeof resumeTemplates.ats)[0];
+  isSelected: boolean;
+  onSelect: () => void;
+  onPreview: () => void;
 }) => {
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: 'border-blue-500 bg-blue-50',
-      gray: 'border-gray-500 bg-gray-50',
-      indigo: 'border-indigo-500 bg-indigo-50',
-      purple: 'border-purple-500 bg-purple-50',
-      green: 'border-green-500 bg-green-50',
-      pink: 'border-pink-500 bg-pink-50',
-      orange: 'border-orange-500 bg-orange-50'
-    }
-    return colors[color as keyof typeof colors] || colors.blue
-  }
+      blue: "border-blue-500 bg-blue-50",
+      gray: "border-gray-500 bg-gray-50",
+      indigo: "border-indigo-500 bg-indigo-50",
+      purple: "border-purple-500 bg-purple-50",
+      green: "border-green-500 bg-green-50",
+      pink: "border-pink-500 bg-pink-50",
+      orange: "border-orange-500 bg-orange-50",
+    };
+    return colors[color as keyof typeof colors] || colors.blue;
+  };
 
   return (
-    <Card 
+    <Card
       className={cn(
         "cursor-pointer transition-all duration-200 hover:shadow-lg",
-        isSelected ? `ring-2 ring-offset-2 ${getColorClasses(template.color)}` : "hover:shadow-md"
+        isSelected
+          ? `ring-2 ring-offset-2 ${getColorClasses(template.color)}`
+          : "hover:shadow-md"
       )}
       onClick={onSelect}
     >
@@ -181,19 +201,50 @@ const TemplateCard = ({
       </CardHeader>
 
       <CardContent className="pt-0">
-        {/* Template Preview */}
+        {/* PNG Template Preview - REPLACED PLACEHOLDER */}
         <div className="relative mb-4 bg-gray-100 rounded-lg overflow-hidden aspect-[3/4] group">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-            <FileText className="w-16 h-16 text-gray-400" />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+          {template.preview ? (
+            <img
+              src={template.preview}
+              alt={`${template.name} preview`}
+              className="relative z-[999] block w-full h-full object-contain"
+              style={{
+                maxWidth: 420,
+                maxHeight: 560,
+                 background: "#fff",
+                display: "block",
+                 mixBlendMode: "normal",
+                 filter: "none",
+                margin: "0 auto",
+                border: "1px solid rgba(0,0,0,0.04)",
+              }}
+              loading="lazy"
+              decoding="async"
+              onError={(e) => {
+                // preserve existing fallback behavior
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement!.innerHTML = `
+                <div class="w-full h-full flex items-center justify-center text-gray-400">
+                    ...
+                 </div>
+                  `;
+              }}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+              <FileText className="w-16 h-16 text-gray-400" />
+            </div>
+          )}
+
+          {/* Preview Button Overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center z-20 pointer-events-none group-hover:pointer-events-auto">
             <Button
               variant="secondary"
               size="sm"
               className="opacity-0 group-hover:opacity-100 transition-opacity"
               onClick={(e) => {
-                e.stopPropagation()
-                onPreview()
+                e.stopPropagation();
+                onPreview();
               }}
             >
               <Eye className="w-4 h-4 mr-1" />
@@ -232,48 +283,55 @@ const TemplateCard = ({
               <Download className="w-4 h-4" />
               <span>{template.downloads.toLocaleString()} downloads</span>
             </div>
-            <Badge variant={template.category === 'ATS Optimized' ? 'default' : 'secondary'} className="text-xs">
+            <Badge
+              variant={
+                template.category === "ATS Optimized" ? "default" : "secondary"
+              }
+              className="text-xs"
+            >
               {template.category}
             </Badge>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 // Industry Filter Component
-const IndustryFilter = ({ 
-  selectedIndustry, 
-  onIndustryChange 
+const IndustryFilter = ({
+  selectedIndustry,
+  onIndustryChange,
 }: {
-  selectedIndustry: string
-  onIndustryChange: (industry: string) => void
+  selectedIndustry: string;
+  onIndustryChange: (industry: string) => void;
 }) => {
   const industries = [
-    { name: 'All Industries', icon: Briefcase, count: 12 },
-    { name: 'Technology', icon: Code, count: 8 },
-    { name: 'Finance', icon: TrendingUp, count: 6 },
-    { name: 'Healthcare', icon: Heart, count: 4 },
-    { name: 'Design', icon: Palette, count: 5 },
-    { name: 'Education', icon: GraduationCap, count: 3 },
-    { name: 'Consulting', icon: Shield, count: 4 }
-  ]
+    { name: "All Industries", icon: Briefcase, count: 12 },
+    { name: "Technology", icon: Code, count: 8 },
+    { name: "Finance", icon: TrendingUp, count: 6 },
+    { name: "Healthcare", icon: Heart, count: 4 },
+    { name: "Design", icon: Palette, count: 5 },
+    { name: "Education", icon: GraduationCap, count: 3 },
+    { name: "Consulting", icon: Shield, count: 4 },
+  ];
 
   return (
     <div className="space-y-2">
-      <h3 className="font-semibold text-sm text-gray-700">Filter by Industry</h3>
+      <h3 className="font-semibold text-sm text-gray-700">
+        Filter by Industry
+      </h3>
       <div className="space-y-1">
         {industries.map((industry) => {
-          const Icon = industry.icon
+          const Icon = industry.icon;
           return (
             <button
               key={industry.name}
               onClick={() => onIndustryChange(industry.name)}
               className={cn(
                 "w-full flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors",
-                selectedIndustry === industry.name 
-                  ? "bg-blue-100 text-blue-700" 
+                selectedIndustry === industry.name
+                  ? "bg-blue-100 text-blue-700"
                   : "hover:bg-gray-100 text-gray-600"
               )}
             >
@@ -285,19 +343,19 @@ const IndustryFilter = ({
                 {industry.count}
               </Badge>
             </button>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 interface TemplateSelectorProps {
-  selectedTemplate?: string
-  onTemplateSelect?: (templateId: string) => void
-  onPreview?: (templateId: string) => void
-  onContinue?: (templateId: string) => void
-  className?: string
+  selectedTemplate?: string;
+  onTemplateSelect?: (templateId: string) => void;
+  onPreview?: (templateId: string) => void;
+  onContinue?: (templateId: string) => void;
+  className?: string;
 }
 
 export default function TemplateSelector({
@@ -305,45 +363,52 @@ export default function TemplateSelector({
   onTemplateSelect,
   onPreview,
   onContinue,
-  className
+  className,
 }: TemplateSelectorProps) {
-  const [activeTab, setActiveTab] = useState('ats')
-  const [selectedIndustry, setSelectedIndustry] = useState('All Industries')
-  const [currentTemplate, setCurrentTemplate] = useState(selectedTemplate || '')
+  const [activeTab, setActiveTab] = useState("ats");
+  const [selectedIndustry, setSelectedIndustry] = useState("All Industries");
+  const [currentTemplate, setCurrentTemplate] = useState(
+    selectedTemplate || ""
+  );
 
   const handleTemplateSelect = (templateId: string) => {
-    setCurrentTemplate(templateId)
-    onTemplateSelect?.(templateId)
-  }
+    setCurrentTemplate(templateId);
+    onTemplateSelect?.(templateId);
+  };
 
   const handlePreview = (templateId: string) => {
-    onPreview?.(templateId)
-  }
+    onPreview?.(templateId);
+  };
 
   const handleContinue = () => {
     if (currentTemplate) {
-      onContinue?.(currentTemplate)
+      onContinue?.(currentTemplate);
     }
-  }
+  };
 
   const getFilteredTemplates = (templates: typeof resumeTemplates.ats) => {
-    if (selectedIndustry === 'All Industries') return templates
-    return templates.filter(template => 
+    if (selectedIndustry === "All Industries") return templates;
+    return templates.filter((template) =>
       template.industry.includes(selectedIndustry)
-    )
-  }
+    );
+  };
 
-  const allTemplates = Object.values(resumeTemplates).flat()
-  const selectedTemplateData = allTemplates.find(t => t.id === currentTemplate)
+  const allTemplates = Object.values(resumeTemplates).flat();
+  const selectedTemplateData = allTemplates.find(
+    (t) => t.id === currentTemplate
+  );
 
   return (
     <div className={cn("w-full max-w-7xl mx-auto p-6 space-y-6", className)}>
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold text-gray-900">Choose Your Resume Template</h1>
+        <h1 className="text-3xl font-bold text-gray-900">
+          Choose Your Resume Template
+        </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Select from our collection of professional resume templates. Each template is designed 
-          to help you stand out while maintaining ATS compatibility.
+          Select from our collection of professional resume templates. Each
+          template is designed to help you stand out while maintaining ATS
+          compatibility.
         </p>
       </div>
 
@@ -390,7 +455,7 @@ export default function TemplateSelector({
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar Filters */}
         <div className="lg:col-span-1 space-y-6">
-          <IndustryFilter 
+          <IndustryFilter
             selectedIndustry={selectedIndustry}
             onIndustryChange={setSelectedIndustry}
           />
@@ -404,10 +469,14 @@ export default function TemplateSelector({
               <CardContent className="pt-0">
                 <div className="space-y-2">
                   <p className="font-medium">{selectedTemplateData.name}</p>
-                  <p className="text-sm text-gray-600">{selectedTemplateData.description}</p>
+                  <p className="text-sm text-gray-600">
+                    {selectedTemplateData.description}
+                  </p>
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm text-green-600">Ready to customize</span>
+                    <span className="text-sm text-green-600">
+                      Ready to customize
+                    </span>
                   </div>
                 </div>
               </CardContent>
@@ -417,16 +486,22 @@ export default function TemplateSelector({
 
         {/* Main Content */}
         <div className="lg:col-span-3">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="ats">
-                ATS Optimized ({getFilteredTemplates(resumeTemplates.ats).length})
+                ATS Optimized (
+                {getFilteredTemplates(resumeTemplates.ats).length})
               </TabsTrigger>
               <TabsTrigger value="modern">
                 Modern ({getFilteredTemplates(resumeTemplates.modern).length})
               </TabsTrigger>
               <TabsTrigger value="creative">
-                Creative ({getFilteredTemplates(resumeTemplates.creative).length})
+                Creative (
+                {getFilteredTemplates(resumeTemplates.creative).length})
               </TabsTrigger>
             </TabsList>
 
@@ -446,29 +521,33 @@ export default function TemplateSelector({
 
             <TabsContent value="modern" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {getFilteredTemplates(resumeTemplates.modern).map((template) => (
-                  <TemplateCard
-                    key={template.id}
-                    template={template}
-                    isSelected={currentTemplate === template.id}
-                    onSelect={() => handleTemplateSelect(template.id)}
-                    onPreview={() => handlePreview(template.id)}
-                  />
-                ))}
+                {getFilteredTemplates(resumeTemplates.modern).map(
+                  (template) => (
+                    <TemplateCard
+                      key={template.id}
+                      template={template}
+                      isSelected={currentTemplate === template.id}
+                      onSelect={() => handleTemplateSelect(template.id)}
+                      onPreview={() => handlePreview(template.id)}
+                    />
+                  )
+                )}
               </div>
             </TabsContent>
 
             <TabsContent value="creative" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {getFilteredTemplates(resumeTemplates.creative).map((template) => (
-                  <TemplateCard
-                    key={template.id}
-                    template={template}
-                    isSelected={currentTemplate === template.id}
-                    onSelect={() => handleTemplateSelect(template.id)}
-                    onPreview={() => handlePreview(template.id)}
-                  />
-                ))}
+                {getFilteredTemplates(resumeTemplates.creative).map(
+                  (template) => (
+                    <TemplateCard
+                      key={template.id}
+                      template={template}
+                      isSelected={currentTemplate === template.id}
+                      onSelect={() => handleTemplateSelect(template.id)}
+                      onPreview={() => handlePreview(template.id)}
+                    />
+                  )
+                )}
               </div>
             </TabsContent>
           </Tabs>
@@ -478,8 +557,8 @@ export default function TemplateSelector({
       {/* Continue Button */}
       {currentTemplate && (
         <div className="flex justify-center mt-8">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             onClick={handleContinue}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
           >
@@ -489,5 +568,5 @@ export default function TemplateSelector({
         </div>
       )}
     </div>
-  )
+  );
 }

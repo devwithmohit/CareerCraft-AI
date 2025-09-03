@@ -26,7 +26,10 @@ import {
   Star,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+import ATSOptimizedTemplate from '../templates/ats-optimized';
+import ClassicTemplate from '../templates/classic';
+import CreativeTemplate from '../templates/creative';
+import ModernTemplate from '../templates/modern';
 // Sample Resume Data (this would come from props/context in real app)
 const sampleResumeData = {
   template: "ats-professional",
@@ -249,7 +252,7 @@ const ATSProfessionalTemplate = ({
   );
 };
 
-const ModernTemplate = ({
+const ModernTemplateLocal = ({
   data,
   zoom,
 }: {
@@ -391,18 +394,37 @@ export default function ResumePreview({
     setIsFullscreen(!isFullscreen);
   };
 
+  // const renderTemplate = () => {
+  //   switch (template) {
+  //     case "modern-gradient":
+  //     case "modern-sidebar":
+  //       return <ModernTemplate data={resumeData} zoom={zoom} />;
+  //     case "ats-professional":
+  //     case "ats-minimal":
+  //     case "ats-executive":
+  //     default:
+  //       return <ATSProfessionalTemplate data={resumeData} zoom={zoom} />;
+  //   }
+  // };
   const renderTemplate = () => {
-    switch (template) {
-      case "modern-gradient":
-      case "modern-sidebar":
-        return <ModernTemplate data={resumeData} zoom={zoom} />;
-      case "ats-professional":
-      case "ats-minimal":
-      case "ats-executive":
-      default:
-        return <ATSProfessionalTemplate data={resumeData} zoom={zoom} />;
-    }
-  };
+  switch (template) {
+    case "ats-optimized":
+      return <ATSOptimizedTemplate data={resumeData} zoom={zoom} />;
+    case "classic":
+      return <ClassicTemplate data={resumeData} zoom={zoom} />;
+    case "creative":
+      return <CreativeTemplate data={resumeData} zoom={zoom} />;
+    case "modern":
+    case "modern-gradient":
+    case "modern-sidebar":
+      return <ModernTemplateLocal data={resumeData} zoom={zoom} />;
+    case "ats-professional":
+    case "ats-minimal":
+    case "ats-executive":
+    default:
+      return <ATSProfessionalTemplate data={resumeData} zoom={zoom} />;
+  }
+};
 
   if (isLoading) {
     return (
