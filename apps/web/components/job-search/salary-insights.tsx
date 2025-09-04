@@ -41,6 +41,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// 
 interface SalaryRange {
   percentile25: number;
   percentile50: number; // median
@@ -290,10 +291,16 @@ export default function SalaryInsights({ className }: SalaryInsightsProps) {
     
     return matchesSearch && matchesIndustry && matchesExperience && matchesLocation;
   });
-
+const numberFormatter = new Intl.NumberFormat('en-US');
+const formatNumber = (n: number) => numberFormatter.format(n);
+const formatIsoDate = (d: string) => new Date(d).toISOString().slice(0, 10);
+  // const formatSalary = (amount: number, currency: string = 'USD') => {
+  //   const symbol = currency === 'USD' ? '$' : currency;
+  //   return `${symbol}${amount.toLocaleString()}`;
+  // };
   const formatSalary = (amount: number, currency: string = 'USD') => {
     const symbol = currency === 'USD' ? '$' : currency;
-    return `${symbol}${amount.toLocaleString()}`;
+    return `${symbol}${formatNumber(amount)}`;
   };
 
   const getGrowthIcon = (growth: number) => {
@@ -409,9 +416,12 @@ export default function SalaryInsights({ className }: SalaryInsightsProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Data Points</p>
-                <p className="text-2xl font-bold text-gray-900">
+                {/* <p className="text-2xl font-bold text-gray-900">
                   {filteredSalaries.reduce((sum, s) => sum + s.sampleSize, 0).toLocaleString()}
-                </p>
+                </p> */}
+                <p className="text-2xl font-bold text-gray-900">
+                  {formatNumber(filteredSalaries.reduce((sum, s) => sum + s.sampleSize, 0))}
+               </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <BarChart3 className="w-6 h-6 text-purple-600" />
@@ -586,11 +596,13 @@ export default function SalaryInsights({ className }: SalaryInsightsProps) {
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1">
                             <Users className="w-3 h-3" />
-                            <span>{salary.sampleSize.toLocaleString()} data points</span>
+                            {/* <span>{salary.sampleSize.toLocaleString()} data points</span> */}
+                             <span>{formatNumber(salary.sampleSize)} data points</span>
                           </div>
                           <div className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
-                            <span>Updated {new Date(salary.lastUpdated).toLocaleDateString()}</span>
+                            {/* <span>Updated {new Date(salary.lastUpdated).toLocaleDateString()}</span> */}
+                             <span>Updated {formatIsoDate(salary.lastUpdated)}</span>
                           </div>
                           {salary.education && (
                             <div className="flex items-center gap-1">

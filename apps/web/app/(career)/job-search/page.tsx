@@ -1,12 +1,12 @@
-
 "use client";
 import React, { useState } from "react";
 import JobCard, { JobCardSkeleton } from "@/components/job-search/job-card";
 import JobDetails from "@/components/job-search/job-details";
-import MarketTrends from '@/components/job-search/market-trends';
-import SalaryInsights from '@/components/job-search/salary-insights';
-
-const sampleJobs = [  {
+import MarketTrends from "@/components/job-search/market-trends";
+import SalaryInsights from "@/components/job-search/salary-insights";
+import SearchFilters, { type SearchFilters as FilterType } from '@/components/job-search/search-filters';
+const sampleJobs = [
+  {
     id: "job-1",
     title: "Senior Data Analyst",
     company: "Acme Analytics",
@@ -53,10 +53,13 @@ const sampleJobs = [  {
     isBookmarked: true,
     category: "Technology",
     benefits: ["Flexible hours"],
-  }, ];
+  },
+];
 
 export default function JobSearchPage() {
-  const [selectedJob, setSelectedJob] = useState<typeof sampleJobs[0] | null>(null);
+  const [selectedJob, setSelectedJob] = useState<(typeof sampleJobs)[0] | null>(
+    null
+  );
 
   const handleApply = (id: string) => console.log("Apply clicked:", id);
   const handleBookmark = (id: string) => console.log("Bookmark toggled:", id);
@@ -67,12 +70,32 @@ export default function JobSearchPage() {
     const job = sampleJobs.find((j) => j.id === id) || null;
     setSelectedJob(job);
   };
-
+  const [filters, setFilters] = useState<FilterType>({
+    query: '',
+    location: 'Any Location',
+    jobType: [],
+    experienceLevel: [],
+    salaryRange: [0, 200000],
+    industry: [],
+    companySize: [],
+    workType: [],
+    postedWithin: 'any',
+    skills: [],
+    benefits: [],
+    sortBy: 'relevance',
+    onlyRemote: false,
+    onlyFeatured: false,
+    onlyUrgent: false,
+    hasVisaSponsorship: false,
+    minMatchScore: 0
+  });
   return (
     <main className="w-full max-w-7xl mx-auto p-6">
       <header className="mb-6">
         <h1 className="text-2xl font-bold">Job Search</h1>
-        <p className="text-sm text-gray-600">Explore matching job opportunities</p>
+        <p className="text-sm text-gray-600">
+          Explore matching job opportunities
+        </p>
       </header>
 
       {selectedJob ? (
@@ -106,11 +129,22 @@ export default function JobSearchPage() {
             )}
           </div>
           <div className="mt-6">
-          <MarketTrends className="mt-6" />
-        </div>
-        <div className="mt-6">
-<SalaryInsights className="mt-6" />
-        </div>
+            <MarketTrends className="mt-6" />
+          </div>
+          <div className="mt-6">
+            <SalaryInsights className="mt-6" />
+          </div>
+          <div>
+            <SearchFilters
+
+             filters={filters}
+              onFiltersChange={setFilters}
+              jobCount={sampleJobs.length} // use sampleJobs or compute filteredJobs before
+              savedSearches={['Frontend Developer', 'Remote Only']}
+              onSaveSearch={(name) => console.log('Save:', name)}
+onLoadSearch={(search) => console.log('Load:', search)}
+            />
+          </div>
         </section>
       )}
     </main>

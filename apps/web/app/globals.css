@@ -5,16 +5,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
 /* @custom-variant dark (&:is(.dark *)); */
 
 
-
-/* @tailwind base;
+/* 
+@tailwind base;
 @tailwind components;
 @tailwind utilities; */
-
-
+@plugin "tailwindcss-animate";
+html, body, #__next {
+  height: 100%;
+}
+body {
+  /* hide the browser scrollbar on the document root to avoid double scrollbars */
+  /* overflow: hidden; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.app-scrollable {
+  height: 100vh; /* full viewport height */
+  overflow: auto; /* single scrollbar */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.12);
+  border-radius: 9999px;
+}
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
