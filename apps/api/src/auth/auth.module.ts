@@ -1,26 +1,46 @@
-import { Module } from "@nestjs/common";
-import { JwtModule } from "@nestjs/jwt";
-import { PassportModule } from "@nestjs/passport";
-import { ConfigService } from "@nestjs/config";
-import { AuthController } from "./auth.controller";
-import { AuthService } from "./auth.service";
-import { KindeStrategy } from "./kinde.strategy";
-import { UsersModule } from "../users/users.module";
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { ConfigService } from '@nestjs/config';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { JwtStrategy, KindeStrategy } from './kinde.strategy';
+import { AuthGuard } from './auth.guard';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
     UsersModule,
-    PassportModule.register({ defaultStrategy: "kinde" }),
+    PassportModule.register({ 
+      defaultStrategy: 'jwt',
+      session: false,
+    }),
     JwtModule.registerAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        secret: config.get("auth.jwtSecret"),
-        signOptions: { expiresIn: "7d" },
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('auth.jwtSecret'),
+        signOptions: { 
+          expiresIn: configService.get('auth.jwtExpiresIn'),
+          algorithm: 'HS256',
+        },
+        verifyOptions: {
+          algorithms: ['HS256'],
+        },
       }),
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, KindeStrategy],
-  exports: [AuthService],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    KindeStrategy,
+    AuthGuard,
+  ],
+  exports: [
+    AuthService,
+    AuthGuard,
+    JwtModule,
+    PassportModule,
+  ],
 })
 export class AuthModule {}
