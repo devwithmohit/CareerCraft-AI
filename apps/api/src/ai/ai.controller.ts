@@ -302,7 +302,23 @@ export class AiController {
   @ApiOperation({ summary: 'Analyze multiple resumes in batch' })
   @ApiResponse({ status: 200, description: 'Batch analysis completed' })
   async batchAnalyze(
-    @Body() body: { resumes: string[]; jobDescription?: string },
+    @Body() body: {     // Add this to your existing resumes.controller.ts
+    @Post('export')
+    @ApiOperation({ summary: 'Export resume in specified format' })
+    async exportResume(
+      @Body() exportDto: ExportResumeDto,
+      @Res() res: Response,
+    ) {
+      const result = await this.exportService.exportResume(exportDto);
+      
+      res.set({
+        'Content-Type': result.mimeType,
+        'Content-Disposition': `attachment; filename="${result.filename}"`,
+        'Content-Length': result.buffer.length,
+      });
+      
+      res.send(result.buffer);
+    }resumes: string[]; jobDescription?: string },
     @CurrentUser('id') userId: string,
   ) {
     const { resumes, jobDescription } = body;
