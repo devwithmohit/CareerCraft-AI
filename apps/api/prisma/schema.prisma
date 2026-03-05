@@ -8,69 +8,173 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  kindeId   String   @unique
-  email     String   @unique
-  firstName String?
-  lastName  String?
-  avatar    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  // Subscription
-  subscription Subscription?
-  
-  // User data
-  resumes Resume[]
-  applications Application[]
-  
+  id             String          @id @default(cuid())
+  kindeId        String          @unique
+  email          String          @unique
+  firstName      String?
+  lastName       String?
+  avatar         String?
+  role           Role            @default(USER)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  subscription   Subscription?
+  jobs           Job[]
+  resumes        Resume[]
+  applications   Application[]
+  coverLetters   CoverLetter[]
+  interviewPreps InterviewPrep[]
+
   @@map("users")
 }
 
 model Subscription {
-  id         String            @id @default(cuid())
-  userId     String            @unique
-  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  plan       SubscriptionPlan
-  status     SubscriptionStatus
-  stripeId   String?           @unique
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
-  
+  id        String             @id @default(cuid())
+  userId    String             @unique
+  plan      SubscriptionPlan
+  status    SubscriptionStatus
+  stripeId  String?            @unique
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@map("subscriptions")
 }
 
-model Resume {
+model Job {
   id          String   @id @default(cuid())
   userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   title       String
-  content     Json
-  template    String
-  atsScore    Int?
+  company     String
+  url         String?
+  description String?
+  salary      String?
+  location    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("jobs")
+}
+
+model Resume {
+  id           String        @id @default(cuid())
+  userId       String
+  title        String
+  content      Json
+  template     String
+  atsScore     Int?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  coverLetters CoverLetter[]
+
+  @@index([userId])
   @@map("resumes")
 }
 
 model Application {
-  id         String            @id @default(cuid())
-  userId     String
-  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  company    String
-  position   String
-  status     ApplicationStatus @default(APPLIED)
-  appliedAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
-  
+  id             String            @id @default(cuid())
+  userId         String
+  company        String
+  position       String
+  status         ApplicationStatus @default(APPLIED)
+  appliedAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  timelineEvents TimelineEvent[]
+  reminders      Reminder[]
+  contacts       Contact[]
+
+  @@index([userId])
+  @@index([userId, status])
   @@map("applications")
+}
+
+model TimelineEvent {
+  id            String      @id @default(cuid())
+  applicationId String
+  type          String
+  title         String
+  description   String?
+  date          DateTime
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@map("timeline_events")
+}
+
+model Reminder {
+  id            String      @id @default(cuid())
+  applicationId String
+  title         String
+  dueDate       DateTime
+  isCompleted   Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@map("reminders")
+}
+
+model Contact {
+  id            String      @id @default(cuid())
+  applicationId String
+  name          String
+  email         String?
+  role          String?
+  company       String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
+  @@map("contacts")
+}
+
+model CoverLetter {
+  id             String   @id @default(cuid())
+  userId         String
+  resumeId       String?
+  jobDescription String?
+  content        String   @db.Text
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resume         Resume?  @relation(fields: [resumeId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([resumeId])
+  @@map("cover_letters")
+}
+
+model InterviewPrep {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  questions Json?
+  feedback  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("interview_preps")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 enum SubscriptionPlan {
   FREE
   PRO
-  ENTERPRISE
+  PREMIUM
 }
 
 enum SubscriptionStatus {

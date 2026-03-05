@@ -1,8 +1,0 @@
-C:\Users\ronni\Project_folder\Python-Ai-Projects\ATS-Resume-Tracker-System\careercraft-ai\apps\api\dist\main.js:56
-    app.use(_helmet());
-            ^
-
-TypeError: _helmet is not a function
-    at bootstrap (C:\Users\ronni\Project_folder\Python-Ai-Projects\ATS-Resume-Tracker-System\careercraft-ai\apps\api\dist\main.js:56:13)
-
-Node.js v20.20.0

@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export enum SubscriptionPlan {
   FREE = 'FREE',
   PRO = 'PRO',
-  ENTERPRISE = 'ENTERPRISE',
+  PREMIUM = 'PREMIUM',
 }
 
 export enum SubscriptionStatus {
