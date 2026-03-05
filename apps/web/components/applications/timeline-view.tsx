@@ -22,7 +22,7 @@ import {
   Mail,
   FileText,
   Filter,
-  Sort,
+  ArrowUpDown as Sort,
   ChevronDown,
   ChevronUp,
   Star,
@@ -168,10 +168,10 @@ export default function TimelineView({ className }: TimelineViewProps) {
           <div className={cn(
             "w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-sm",
             config.color === 'text-blue-600' ? 'bg-blue-100' :
-            config.color === 'text-green-600' ? 'bg-green-100' :
-            config.color === 'text-yellow-600' ? 'bg-yellow-100' :
-            config.color === 'text-red-600' ? 'bg-red-100' :
-            'bg-gray-100'
+              config.color === 'text-green-600' ? 'bg-green-100' :
+                config.color === 'text-yellow-600' ? 'bg-yellow-100' :
+                  config.color === 'text-red-600' ? 'bg-red-100' :
+                    'bg-gray-100'
           )}>
             <Icon className={cn("w-4 h-4", config.color)} />
           </div>

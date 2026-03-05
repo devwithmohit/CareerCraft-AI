@@ -1,0 +1,8 @@
+
+> api@1.0.0 build C:\Users\ronni\Project_folder\Python-Ai-Projects\ATS-Resume-Tracker-System\careercraft-ai\apps\api
+> nest build
+
+- [46m[1m TSC [22m[49m[36m Initializing type checker...[39m
+✔ [46m[1m TSC [22m[49m[36m Initializing type checker...[39m
+[48;2;210;0;75m[1m[38;2;0;0;0m Error [39m[22m[49m Failed to load "@swc/cli" and/or "@swc/core" required packages. Please, make sure to install them as development dependencies.
+ ELIFECYCLE  Command failed with exit code 1.

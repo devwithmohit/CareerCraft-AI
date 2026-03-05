@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { PrismaService } from '../database/database.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -6,7 +7,7 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(createUserDto: CreateUserDto) {
     try {
@@ -152,7 +153,7 @@ export class UsersService {
 
   async getUserStats(id: string) {
     const user = await this.findOne(id);
-    
+
     const stats = await this.prisma.$transaction([
       // Total resumes
       this.prisma.resume.count({

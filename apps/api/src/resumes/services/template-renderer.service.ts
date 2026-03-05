@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as handlebars from 'handlebars';

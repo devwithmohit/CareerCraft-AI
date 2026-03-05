@@ -1,0 +1,684 @@
+
+> api@1.0.0 build C:\Users\ronni\Project_folder\Python-Ai-Projects\ATS-Resume-Tracker-System\careercraft-ai\apps\api
+> nest build
+
+- [46m[1m TSC [22m[49m[36m Initializing type checker...[39m
+
+[96msrc/ai/dto/analyze-resume.dto.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'resumeText' has no initializer and is not definitely assigned in the constructor.
+
+[7m19[0m   resumeText: string;
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/ai/dto/generate-cover-letter.dto.ts[0m:[93m25[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'resumeText' has no initializer and is not definitely assigned in the constructor.
+
+[7m25[0m   resumeText: string;
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/ai/dto/generate-cover-letter.dto.ts[0m:[93m33[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'jobDescription' has no initializer and is not definitely assigned in the constructor.
+
+[7m33[0m   jobDescription: string;
+[7m  [0m [91m  ~~~~~~~~~~~~~~[0m
+[96msrc/ai/dto/generate-cover-letter.dto.ts[0m:[93m41[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'companyName' has no initializer and is not definitely assigned in the constructor.
+
+[7m41[0m   companyName: string;
+[7m  [0m [91m  ~~~~~~~~~~~[0m
+[96msrc/ai/dto/generate-cover-letter.dto.ts[0m:[93m49[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'positionTitle' has no initializer and is not definitely assigned in the constructor.
+
+[7m49[0m   positionTitle: string;
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+[96msrc/ai/dto/job-match.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'resumeText' has no initializer and is not definitely assigned in the constructor.
+
+[7m11[0m   resumeText: string;
+[7m  [0m [91m  ~~~~~~~~~~[0m
+[96msrc/ai/services/content-generator.service.ts[0m:[93m25[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'genAI' has no initializer and is not definitely assigned in the constructor.
+
+[7m25[0m   private genAI: GoogleGenerativeAI;
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/ai/services/content-generator.service.ts[0m:[93m118[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m118[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/content-generator.service.ts[0m:[93m249[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m249[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/content-generator.service.ts[0m:[93m495[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m495[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/cover-letter-generator.service.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'genAI' has no initializer and is not definitely assigned in the constructor.
+
+[7m10[0m   private genAI: GoogleGenerativeAI;
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/ai/services/cover-letter-generator.service.ts[0m:[93m53[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m53[0m         model: this.configService.get('ai.geminiModel')
+[7m  [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/cover-letter-generator.service.ts[0m:[93m168[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m168[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'genAI' has no initializer and is not definitely assigned in the constructor.
+
+[7m10[0m   private genAI: GoogleGenerativeAI;
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m265[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m265[0m           model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m          ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m390[0m:[93m25[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ Entry: number; 'Mid-Level': number; Mid: number; 'Mid-Senior': number; Senior: number; Lead: number; Principal: number; }'.
+
+[7m390[0m     const resumeLevel = levelMap[resumeExperience.level] || 2;
+[7m   [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m391[0m:[93m27[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Entry: number; 'Mid-Level': number; Mid: number; 'Mid-Senior': number; Senior: number; Lead: number; Principal: number; }'.
+  No index signature with a parameter of type 'string' was found on type '{ Entry: number; 'Mid-Level': number; Mid: number; 'Mid-Senior': number; Senior: number; Lead: number; Principal: number; }'.
+
+[7m391[0m     const jobLevelValue = levelMap[jobLevel] || 2;
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m439[0m:[93m59[0m - [91merror[0m[90m TS7006: [0mParameter 'req' implicitly has an 'any' type.
+
+[7m439[0m     if (resumeAnalysis.education && job.requirements.some(req =>
+[7m   [0m [91m                                                          ~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m447[0m:[93m31[0m - [91merror[0m[90m TS7006: [0mParameter 'req' implicitly has an 'any' type.
+
+[7m447[0m     if (job.requirements.some(req =>
+[7m   [0m [91m                              ~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m450[0m:[93m40[0m - [91merror[0m[90m TS7006: [0mParameter 'keyword' implicitly has an 'any' type.
+
+[7m450[0m       if (resumeAnalysis.keywords.some(keyword =>
+[7m   [0m [91m                                       ~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m463[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m463[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m561[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m561[0m       industries[job.industry] = (industries[job.industry] || 0) + 1;
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m561[0m:[93m35[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m561[0m       industries[job.industry] = (industries[job.industry] || 0) + 1;
+[7m   [0m [91m                                  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m570[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m570[0m       locations[city] = (locations[city] || 0) + 1;
+[7m   [0m [91m      ~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m570[0m:[93m26[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m570[0m       locations[city] = (locations[city] || 0) + 1;
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m578[0m:[93m7[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m578[0m       levels[job.experienceLevel] = (levels[job.experienceLevel] || 0) + 1;
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m578[0m:[93m38[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+
+[7m578[0m       levels[job.experienceLevel] = (levels[job.experienceLevel] || 0) + 1;
+[7m   [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m594[0m:[93m54[0m - [91merror[0m[90m TS18047: [0m's' is possibly 'null'.
+
+[7m594[0m     const avgMin = salaries.reduce((sum, s) => sum + s.min, 0) / salaries.length;
+[7m   [0m [91m                                                     ~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m595[0m:[93m54[0m - [91merror[0m[90m TS18047: [0m's' is possibly 'null'.
+
+[7m595[0m     const avgMax = salaries.reduce((sum, s) => sum + s.max, 0) / salaries.length;
+[7m   [0m [91m                                                     ~[0m
+[96msrc/ai/services/job-matcher.service.ts[0m:[93m596[0m:[93m58[0m - [91merror[0m[90m TS18047: [0m's' is possibly 'null'.
+
+[7m596[0m     const avgOverall = salaries.reduce((sum, s) => sum + s.avg, 0) / salaries.length;
+[7m   [0m [91m                                                         ~[0m
+[96msrc/ai/services/resume-analyzer.service.ts[0m:[93m5[0m:[93m27[0m - [91merror[0m[90m TS7016: [0mCould not find a declaration file for module 'pdf-parse'. 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/node_modules/.pnpm/pdf-parse@1.1.4/node_modules/pdf-parse/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/pdf-parse` if it exists or add a new declaration (.d.ts) file containing `declare module 'pdf-parse';`
+
+[7m5[0m import * as pdfParse from 'pdf-parse';
+[7m [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/ai/services/resume-analyzer.service.ts[0m:[93m10[0m:[93m11[0m - [91merror[0m[90m TS2564: [0mProperty 'genAI' has no initializer and is not definitely assigned in the constructor.
+
+[7m10[0m   private genAI: GoogleGenerativeAI;
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/ai/services/resume-analyzer.service.ts[0m:[93m52[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m52[0m         model: this.configService.get('ai.geminiModel')
+[7m  [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/ai/services/resume-analyzer.service.ts[0m:[93m151[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m151[0m         model: this.configService.get('ai.geminiModel')
+[7m   [0m [91m        ~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@google+generative-ai@0.24.1/node_modules/@google/generative-ai/dist/generative-ai.d.ts[0m:[93m1087[0m:[93m5[0m
+    [7m1087[0m     model: string;
+    [7m    [0m [96m    ~~~~~[0m
+    The expected type comes from property 'model' which is declared here on type 'ModelParams'
+[96msrc/app.module.ts[0m:[93m9[0m:[93m37[0m - [91merror[0m[90m TS2306: [0mFile 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/apps/api/src/subscriptions/subscriptions.module.ts' is not a module.
+
+[7m9[0m import { SubscriptionsModule } from './subscriptions/subscriptions.module';
+[7m [0m [91m                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.controller.ts[0m:[93m14[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module './dto/create-application.dto' or its corresponding type declarations.
+
+[7m14[0m import { CreateApplicationDto } from './dto/create-application.dto';
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.controller.ts[0m:[93m15[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module './dto/update-application.dto' or its corresponding type declarations.
+
+[7m15[0m import { UpdateApplicationDto } from './dto/update-application.dto';
+[7m  [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.module.ts[0m:[93m4[0m:[93m31[0m - [91merror[0m[90m TS2307: [0mCannot find module '../database/prisma.service' or its corresponding type declarations.
+
+[7m4[0m import { PrismaService } from '../database/prisma.service';
+[7m [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m3[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module './dto/create-application.dto' or its corresponding type declarations.
+
+[7m3[0m import { CreateApplicationDto } from './dto/create-application.dto';
+[7m [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m4[0m:[93m38[0m - [91merror[0m[90m TS2307: [0mCannot find module './dto/update-application.dto' or its corresponding type declarations.
+
+[7m4[0m import { UpdateApplicationDto } from './dto/update-application.dto';
+[7m [0m [91m                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m11[0m:[93m43[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m11[0m     const application = await this.prisma.jobApplication.create({
+[7m  [0m [91m                                          ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m72[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m72[0m       this.prisma.jobApplication.findMany({
+[7m  [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m99[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m99[0m       this.prisma.jobApplication.count({ where }),
+[7m  [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m114[0m:[93m43[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m114[0m     const application = await this.prisma.jobApplication.findFirst({
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m158[0m:[93m43[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m158[0m     const application = await this.prisma.jobApplication.update({
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m178[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'timelineEvent' does not exist on type 'PrismaService'.
+
+[7m178[0m     const event = await this.prisma.timelineEvent.create({
+[7m   [0m [91m                                    ~~~~~~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m192[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'reminder' does not exist on type 'PrismaService'.
+
+[7m192[0m     const newReminder = await this.prisma.reminder.create({
+[7m   [0m [91m                                          ~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m212[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'reminder' does not exist on type 'PrismaService'.
+
+[7m212[0m     const reminder = await this.prisma.reminder.update({
+[7m   [0m [91m                                       ~~~~~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m223[0m:[93m23[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m223[0m     await this.prisma.jobApplication.delete({
+[7m   [0m [91m                      ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m240[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m240[0m       this.prisma.jobApplication.count({ where: { userId } }),
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m241[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m241[0m       this.prisma.jobApplication.count({ where: { userId, status: 'applied' } }),
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m242[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m242[0m       this.prisma.jobApplication.count({ where: { userId, status: 'interview' } }),
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m243[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m243[0m       this.prisma.jobApplication.count({ where: { userId, status: 'offer' } }),
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m244[0m:[93m19[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m244[0m       this.prisma.jobApplication.count({ where: { userId, status: 'rejected' } }),
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m265[0m:[93m37[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m265[0m     const total = await this.prisma.jobApplication.count({ where: { userId } });
+[7m   [0m [91m                                    ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m266[0m:[93m41[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m266[0m     const responses = await this.prisma.jobApplication.count({
+[7m   [0m [91m                                        ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m279[0m:[93m44[0m - [91merror[0m[90m TS2551: [0mProperty 'jobApplication' does not exist on type 'PrismaService'. Did you mean 'application'?
+
+[7m279[0m     const applications = await this.prisma.jobApplication.findMany({
+[7m   [0m [91m                                           ~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m240[0m:[93m7[0m
+    [7m240[0m   get application(): Prisma.ApplicationDelegate<ExtArgs, ClientOptions>;
+    [7m   [0m [96m      ~~~~~~~~~~~[0m
+    'application' is declared here.
+[96msrc/applications/applications.service.ts[0m:[93m293[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 'app' implicitly has an 'any' type.
+
+[7m293[0m       .filter(app => app.timeline.length > 0)
+[7m   [0m [91m              ~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m294[0m:[93m12[0m - [91merror[0m[90m TS7006: [0mParameter 'app' implicitly has an 'any' type.
+
+[7m294[0m       .map(app => {
+[7m   [0m [91m           ~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m302[0m:[93m41[0m - [91merror[0m[90m TS7006: [0mParameter 'sum' implicitly has an 'any' type.
+
+[7m302[0m     const avgMs = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length;
+[7m   [0m [91m                                        ~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m302[0m:[93m46[0m - [91merror[0m[90m TS7006: [0mParameter 'time' implicitly has an 'any' type.
+
+[7m302[0m     const avgMs = responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length;
+[7m   [0m [91m                                             ~~~~[0m
+[96msrc/applications/applications.service.ts[0m:[93m316[0m:[93m12[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ applied: string; interview: string; offer: string; rejected: string; withdrawn: string; draft: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ applied: string; interview: string; offer: string; rejected: string; withdrawn: string; draft: string; }'.
+
+[7m316[0m     return mapping[status] || 'note';
+[7m   [0m [91m           ~~~~~~~~~~~~~~~[0m
+[96msrc/auth/auth.guard.ts[0m:[93m61[0m:[93m11[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+[7m61[0m       if (error.name === 'TokenExpiredError') {
+[7m  [0m [91m          ~~~~~[0m
+[96msrc/auth/auth.guard.ts[0m:[93m63[0m:[93m18[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+[7m63[0m       } else if (error.name === 'JsonWebTokenError') {
+[7m  [0m [91m                 ~~~~~[0m
+[96msrc/auth/dto/register.dto.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m7[0m   email: string;
+[7m [0m [91m  ~~~~~[0m
+[96msrc/auth/dto/register.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'firstName' has no initializer and is not definitely assigned in the constructor.
+
+[7m11[0m   firstName: string;
+[7m  [0m [91m  ~~~~~~~~~[0m
+[96msrc/auth/dto/register.dto.ts[0m:[93m15[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'lastName' has no initializer and is not definitely assigned in the constructor.
+
+[7m15[0m   lastName: string;
+[7m  [0m [91m  ~~~~~~~~[0m
+[96msrc/auth/dto/register.dto.ts[0m:[93m19[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'kindeId' has no initializer and is not definitely assigned in the constructor.
+
+[7m19[0m   kindeId: string;
+[7m  [0m [91m  ~~~~~~~[0m
+[96msrc/auth/kinde.strategy.ts[0m:[93m14[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "HS256"[]; }]' is not assignable to parameter of type '[opt: StrategyOptionsWithRequest] | [opt: StrategyOptionsWithoutRequest]'.
+  Type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "HS256"[]; }]' is not assignable to type '[opt: StrategyOptionsWithoutRequest]'.
+    Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "HS256"[]; }' is not assignable to type 'StrategyOptionsWithoutRequest'.
+      Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "HS256"[]; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider"> & { passReqToCallback?: false | undefined; }'.
+        Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "HS256"[]; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider">'.
+          Types of property 'secretOrKey' are incompatible.
+            Type 'string | Buffer<ArrayBufferLike> | undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.
+              Type 'undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.
+
+[7m 14[0m     super({
+[7m   [0m [91m          ~[0m
+[7m 15[0m       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 18[0m       algorithms: ['HS256'],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 19[0m     });
+[7m   [0m [91m~~~~~[0m
+[96msrc/auth/kinde.strategy.ts[0m:[93m54[0m:[93m11[0m - [91merror[0m[90m TS2345: [0mArgument of type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "RS256"[]; }]' is not assignable to parameter of type '[opt: StrategyOptionsWithRequest] | [opt: StrategyOptionsWithoutRequest]'.
+  Type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "RS256"[]; }]' is not assignable to type '[opt: StrategyOptionsWithoutRequest]'.
+    Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "RS256"[]; }' is not assignable to type 'StrategyOptionsWithoutRequest'.
+      Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "RS256"[]; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider"> & { passReqToCallback?: false | undefined; }'.
+        Type '{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; secretOrKey: string | Buffer<ArrayBufferLike> | undefined; algorithms: "RS256"[]; }' is not assignable to type 'Omit<WithSecretOrKey, "secretOrKeyProvider">'.
+          Types of property 'secretOrKey' are incompatible.
+            Type 'string | Buffer<ArrayBufferLike> | undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.
+              Type 'undefined' is not assignable to type 'string | Buffer<ArrayBufferLike>'.
+
+[7m 54[0m     super({
+[7m   [0m [91m          ~[0m
+[7m 55[0m       jwtFromRequest: ExtractJwt.fromBodyField('token'), // For Kinde webhooks
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 58[0m       algorithms: ['RS256'], // Kinde uses RS256
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 59[0m     });
+[7m   [0m [91m~~~~~[0m
+[96msrc/config/ai.config.ts[0m:[93m17[0m:[93m23[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m17[0m   maxTokens: parseInt(process.env.AI_MAX_TOKENS) || 4000,
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/ai.config.ts[0m:[93m18[0m:[93m27[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m18[0m   temperature: parseFloat(process.env.AI_TEMPERATURE) || 0.7,
+[7m  [0m [91m                          ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/ai.config.ts[0m:[93m27[0m:[93m33[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m27[0m   matchingThreshold: parseFloat(process.env.JOB_MATCHING_THRESHOLD) || 0.7,
+[7m  [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/ai.config.ts[0m:[93m30[0m:[93m31[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m30[0m   requestsPerMinute: parseInt(process.env.AI_REQUESTS_PER_MINUTE) || 10,
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/ai.config.ts[0m:[93m31[0m:[93m29[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m31[0m   requestsPerHour: parseInt(process.env.AI_REQUESTS_PER_HOUR) || 100,
+[7m  [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/auth.config.ts[0m:[93m36[0m:[93m29[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m36[0m     sessionMaxAge: parseInt(process.env.SESSION_MAX_AGE) || 7 * 24 * 60 * 60 * 1000, // 7 days
+[7m  [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/auth.config.ts[0m:[93m39[0m:[93m32[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m39[0m     bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS) || 12,
+[7m  [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/auth.config.ts[0m:[93m40[0m:[93m32[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m40[0m     maxLoginAttempts: parseInt(process.env.MAX_LOGIN_ATTEMPTS) || 5,
+[7m  [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/auth.config.ts[0m:[93m41[0m:[93m31[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m41[0m     lockoutDuration: parseInt(process.env.LOCKOUT_DURATION) || 15 * 60 * 1000, // 15 minutes
+[7m  [0m [91m                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/config/database.config.ts[0m:[93m6[0m:[93m18[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m6[0m   port: parseInt(process.env.DB_PORT, 10) || 5432,
+[7m [0m [91m                 ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m38[0m:[93m16[0m - [91merror[0m[90m TS2345: [0mArgument of type '"query"' is not assignable to parameter of type 'never'.
+
+[7m38[0m       this.$on('query', (e) => {
+[7m  [0m [91m               ~~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m39[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'query' does not exist on type 'never'.
+
+[7m39[0m         this.logger.log(`Query: ${e.query}`);
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m40[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'params' does not exist on type 'never'.
+
+[7m40[0m         this.logger.log(`Params: ${e.params}`);
+[7m  [0m [91m                                     ~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m41[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'duration' does not exist on type 'never'.
+
+[7m41[0m         this.logger.log(`Duration: ${e.duration}ms`);
+[7m  [0m [91m                                       ~~~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m45[0m:[93m14[0m - [91merror[0m[90m TS2345: [0mArgument of type '"error"' is not assignable to parameter of type 'never'.
+
+[7m45[0m     this.$on('error', (e) => {
+[7m  [0m [91m             ~~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m49[0m:[93m14[0m - [91merror[0m[90m TS2345: [0mArgument of type '"warn"' is not assignable to parameter of type 'never'.
+
+[7m49[0m     this.$on('warn', (e) => {
+[7m  [0m [91m             ~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m53[0m:[93m14[0m - [91merror[0m[90m TS2345: [0mArgument of type '"info"' is not assignable to parameter of type 'never'.
+
+[7m53[0m     this.$on('info', (e) => {
+[7m  [0m [91m             ~~~~~~[0m
+[96msrc/database/database.service.ts[0m:[93m94[0m:[93m14[0m - [91merror[0m[90m TS2345: [0mArgument of type '"beforeExit"' is not assignable to parameter of type 'never'.
+
+[7m94[0m     this.$on('beforeExit', async () => {
+[7m  [0m [91m             ~~~~~~~~~~~~[0m
+[96msrc/main.ts[0m:[93m5[0m:[93m30[0m - [91merror[0m[90m TS7016: [0mCould not find a declaration file for module 'compression'. 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/node_modules/.pnpm/compression@1.8.1/node_modules/compression/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/compression` if it exists or add a new declaration (.d.ts) file containing `declare module 'compression';`
+
+[7m5[0m import * as compression from "compression";
+[7m [0m [91m                             ~~~~~~~~~~~~~[0m
+[96msrc/main.ts[0m:[93m12[0m:[93m11[0m - [91merror[0m[90m TS2349: [0mThis expression is not callable.
+  Type 'typeof import("C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/node_modules/.pnpm/helmet@8.1.0/node_modules/helmet/index")' has no call signatures.
+
+[7m12[0m   app.use(helmet());
+[7m  [0m [91m          ~~~~~~[0m
+[96msrc/resumes/services/export.service.ts[0m:[93m4[0m:[93m33[0m - [91merror[0m[90m TS2306: [0mFile 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/apps/api/src/resumes/dto/export-resume.dto.ts' is not a module.
+
+[7m4[0m import { ExportResumeDto } from '../dto/export-resume.dto';
+[7m [0m [91m                                ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/resumes/services/pdf-generator.service.ts[0m:[93m66[0m:[93m7[0m - [91merror[0m[90m TS2740: [0mType 'Uint8Array<ArrayBufferLike>' is missing the following properties from type 'Buffer<ArrayBufferLike>': write, toJSON, equals, compare, and 66 more.
+
+[7m66[0m       return pdfBuffer;
+[7m  [0m [91m      ~~~~~~[0m
+[96msrc/resumes/services/pdf-generator.service.ts[0m:[93m69[0m:[93m49[0m - [91merror[0m[90m TS18046: [0m'error' is of type 'unknown'.
+
+[7m69[0m       throw new Error(`PDF generation failed: ${error.message}`);
+[7m  [0m [91m                                                ~~~~~[0m
+[96msrc/resumes/services/template-renderer.service.ts[0m:[93m546[0m:[93m27[0m - [91merror[0m[90m TS2683: [0m'this' implicitly has type 'any' because it does not have a type annotation.
+
+[7m546[0m         return options.fn(this);
+[7m   [0m [91m                          ~~~~[0m
+
+  [96msrc/resumes/services/template-renderer.service.ts[0m:[93m544[0m:[93m40[0m
+    [7m544[0m     handlebars.registerHelper('if_eq', function(a, b, options) {
+    [7m   [0m [96m                                       ~~~~~~~~[0m
+    An outer value of 'this' is shadowed by this container.
+[96msrc/resumes/services/template-renderer.service.ts[0m:[93m548[0m:[93m30[0m - [91merror[0m[90m TS2683: [0m'this' implicitly has type 'any' because it does not have a type annotation.
+
+[7m548[0m       return options.inverse(this);
+[7m   [0m [91m                             ~~~~[0m
+
+  [96msrc/resumes/services/template-renderer.service.ts[0m:[93m544[0m:[93m40[0m
+    [7m544[0m     handlebars.registerHelper('if_eq', function(a, b, options) {
+    [7m   [0m [96m                                       ~~~~~~~~[0m
+    An outer value of 'this' is shadowed by this container.
+[96msrc/subscriptions/dto/create-subscription.dto.ts[0m:[93m17[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'plan' has no initializer and is not definitely assigned in the constructor.
+
+[7m17[0m   plan: SubscriptionPlan;
+[7m  [0m [91m  ~~~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m18[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'id' has no initializer and is not definitely assigned in the constructor.
+
+[7m18[0m   id: string;
+[7m  [0m [91m  ~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m21[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'userId' has no initializer and is not definitely assigned in the constructor.
+
+[7m21[0m   userId: string;
+[7m  [0m [91m  ~~~~~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m24[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'plan' has no initializer and is not definitely assigned in the constructor.
+
+[7m24[0m   plan: SubscriptionPlan;
+[7m  [0m [91m  ~~~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m27[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'status' has no initializer and is not definitely assigned in the constructor.
+
+[7m27[0m   status: SubscriptionStatus;
+[7m  [0m [91m  ~~~~~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m33[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'createdAt' has no initializer and is not definitely assigned in the constructor.
+
+[7m33[0m   createdAt: Date;
+[7m  [0m [91m  ~~~~~~~~~[0m
+[96msrc/subscriptions/entities/subscription.entity.ts[0m:[93m36[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'updatedAt' has no initializer and is not definitely assigned in the constructor.
+
+[7m36[0m   updatedAt: Date;
+[7m  [0m [91m  ~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.controller.ts[0m:[93m20[0m:[93m34[0m - [91merror[0m[90m TS2306: [0mFile 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/apps/api/src/subscriptions/dto/stripe-webhook.dto.ts' is not a module.
+
+[7m20[0m import { StripeWebhookDto } from './dto/stripe-webhook.dto';
+[7m  [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m5[0m:[93m34[0m - [91merror[0m[90m TS2306: [0mFile 'C:/Users/ronni/Project_folder/Python-Ai-Projects/ATS-Resume-Tracker-System/careercraft-ai/apps/api/src/subscriptions/dto/stripe-webhook.dto.ts' is not a module.
+
+[7m5[0m import { StripeWebhookDto } from './dto/stripe-webhook.dto';
+[7m [0m [91m                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m17[0m:[93m30[0m - [91merror[0m[90m TS2345: [0mArgument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+[7m17[0m     this.stripe = new Stripe(this.configService.get('stripe.secretKey'), {
+[7m  [0m [91m                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m92[0m:[93m13[0m - [91merror[0m[90m TS2339: [0mProperty 'payment_intent' does not exist on type 'Invoice'.
+
+[7m92[0m           ?.payment_intent?.client_secret,
+[7m  [0m [91m            ~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m162[0m:[93m61[0m - [91merror[0m[90m TS2339: [0mProperty 'current_period_start' does not exist on type 'Response<Subscription>'.
+
+[7m162[0m             currentPeriodStart: new Date(stripeSubscription.current_period_start * 1000),
+[7m   [0m [91m                                                            ~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m163[0m:[93m59[0m - [91merror[0m[90m TS2339: [0mProperty 'current_period_end' does not exist on type 'Response<Subscription>'.
+
+[7m163[0m             currentPeriodEnd: new Date(stripeSubscription.current_period_end * 1000),
+[7m   [0m [91m                                                          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m344[0m:[93m21[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ PRO: any; ENTERPRISE: any; }'.
+  No index signature with a parameter of type 'string' was found on type '{ PRO: any; ENTERPRISE: any; }'.
+
+[7m344[0m     const priceId = priceIds[plan];
+[7m   [0m [91m                    ~~~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m362[0m:[93m17[0m - [91merror[0m[90m TS2322: [0mType 'string' is not assignable to type 'SubscriptionStatus | EnumSubscriptionStatusFieldUpdateOperationsInput | undefined'.
+
+[7m362[0m         data: { status },
+[7m   [0m [91m                ~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m6307[0m:[93m5[0m
+    [7m6307[0m     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
+    [7m    [0m [96m    ~~~~~~[0m
+    The expected type comes from property 'status' which is declared here on type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m381[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'subscription' does not exist on type 'Invoice'.
+
+[7m381[0m     if (invoice.subscription) {
+[7m   [0m [91m                ~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m383[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'subscription' does not exist on type 'Invoice'.
+
+[7m383[0m         where: { stripeId: invoice.subscription as string },
+[7m   [0m [91m                                   ~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m396[0m:[93m17[0m - [91merror[0m[90m TS2339: [0mProperty 'subscription' does not exist on type 'Invoice'.
+
+[7m396[0m     if (invoice.subscription) {
+[7m   [0m [91m                ~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m398[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'subscription' does not exist on type 'Invoice'.
+
+[7m398[0m         where: { stripeId: invoice.subscription as string },
+[7m   [0m [91m                                   ~~~~~~~~~~~~[0m
+[96msrc/subscriptions/subscriptions.service.ts[0m:[93m421[0m:[93m12[0m - [91merror[0m[90m TS7053: [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ active: string; trialing: string; past_due: string; canceled: string; unpaid: string; incomplete: string; incomplete_expired: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ active: string; trialing: string; past_due: string; canceled: string; unpaid: string; incomplete: string; incomplete_expired: string; }'.
+
+[7m421[0m     return statusMap[stripeStatus] || 'EXPIRED';
+[7m   [0m [91m           ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/users/dto/create-user.dto.ts[0m:[93m7[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'kindeId' has no initializer and is not definitely assigned in the constructor.
+
+[7m7[0m   kindeId: string;
+[7m [0m [91m  ~~~~~~~[0m
+[96msrc/users/dto/create-user.dto.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS2564: [0mProperty 'email' has no initializer and is not definitely assigned in the constructor.
+
+[7m11[0m   email: string;
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/users/users.service.ts[0m:[93m166[0m:[93m39[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ by: "status"[]; where: { userId: string; }; _count: true; }' is not assignable to parameter of type '{ where?: ApplicationWhereInput | undefined; orderBy?: ApplicationOrderByWithAggregationInput | ApplicationOrderByWithAggregationInput[] | undefined; ... 6 more ...; _max?: ApplicationMaxAggregateInputType | undefined; } & { ...; }'.
+  Property 'orderBy' is missing in type '{ by: "status"[]; where: { userId: string; }; _count: true; }' but required in type '{ orderBy: ApplicationOrderByWithAggregationInput | ApplicationOrderByWithAggregationInput[] | undefined; }'.
+
+[7m166[0m       this.prisma.application.groupBy({
+[7m   [0m [91m                                      ~[0m
+[7m167[0m         by: ['status'],
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m169[0m         _count: true,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m170[0m       }),
+[7m   [0m [91m~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@prisma+client@6.19.2_prism_e243cc63095a2adb97e69faf030fe2d1/node_modules/.prisma/client/index.d.ts[0m:[93m5162[0m:[93m13[0m
+    [7m5162[0m         ? { orderBy: ApplicationGroupByArgs['orderBy'] }
+    [7m    [0m [96m            ~~~~~~~[0m
+    'orderBy' is declared here.
+
+ ELIFECYCLE  Command failed with exit code 1.

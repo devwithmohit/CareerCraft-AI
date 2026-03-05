@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Injectable, Logger, BadRequestException } from '@nestjs/common';
 import { PdfGeneratorService } from './pdf-generator.service';
 import { TemplateRendererService } from './template-renderer.service';

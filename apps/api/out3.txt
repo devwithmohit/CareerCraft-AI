@@ -1,0 +1,51 @@
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:43 am [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:43 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +11ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:43 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDatabaseModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mResumesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSubscriptionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +34ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/status, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/version, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/refresh, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/logout, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/webhooks/kinde, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/me, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/me/stats, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/me, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mResumesController {/resumes}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSubscriptionsController {/subscriptions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions/me, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions/cancel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions/resume, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/subscriptions/webhooks/stripe, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mDatabase info:[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[PrismaService] [39mObject(3) {
+  timestamp: [35m2026-03-05T03:57:44.053Z[39m,
+  message: [32m'Starting a postgresql pool with 17 connections.'[39m,
+  target: [32m'quaint::pooled'[39m
+}
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[PrismaService] [39m[32m✅ Database connected successfully[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[PrismaService] [39m[32m✅ Database health check passed[39m
+[32m[Nest] 7304  - [39m05/03/2026, 9:27:44 am [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+ API running on http://localhost:3001
+Docs available at http://localhost:3001/docs

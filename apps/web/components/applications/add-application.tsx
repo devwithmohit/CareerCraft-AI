@@ -11,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useJobStore, useResumeStore } from '@/store';
+import { useJobStore } from '@/store/job-store';
+import { useResumeStore } from '@/store/resume-store';
 import { useUIStore } from '@/store/ui-store';
 import { cn } from '@/lib/utils';
 import { useForm, Controller } from 'react-hook-form';

@@ -23,12 +23,12 @@ import { CurrentUser } from '../common/decorators/current-user.decorator';
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
 export class AiController {
-  constructor(private readonly aiService: AiService) {}
+  constructor(private readonly aiService: AiService) { }
 
   @Post('analyze-resume')
   @ApiOperation({ summary: 'Analyze resume for ATS compatibility and improvements' })
-  @ApiResponse({ 
-    status: 200, 
+  @ApiResponse({
+    status: 200,
     description: 'Resume analysis completed successfully',
     schema: {
       type: 'object',
@@ -112,8 +112,8 @@ export class AiController {
 
   @Post('match-jobs')
   @ApiOperation({ summary: 'Find matching jobs based on resume and preferences' })
-  @ApiResponse({ 
-    status: 200, 
+  @ApiResponse({
+    status: 200,
     description: 'Job matching completed successfully',
     schema: {
       type: 'object',
@@ -151,8 +151,8 @@ export class AiController {
 
   @Post('generate-cover-letter')
   @ApiOperation({ summary: 'Generate personalized cover letter' })
-  @ApiResponse({ 
-    status: 200, 
+  @ApiResponse({
+    status: 200,
     description: 'Cover letter generated successfully',
     schema: {
       type: 'object',
@@ -181,8 +181,8 @@ export class AiController {
 
   @Post('generate-content')
   @ApiOperation({ summary: 'Generate content for specific resume sections' })
-  @ApiResponse({ 
-    status: 200, 
+  @ApiResponse({
+    status: 200,
     description: 'Content generated successfully',
     schema: {
       type: 'object',
@@ -209,9 +209,9 @@ export class AiController {
 
   @Post('improve-section')
   @ApiOperation({ summary: 'Get AI suggestions to improve resume section' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'Section improvements generated successfully' 
+  @ApiResponse({
+    status: 200,
+    description: 'Section improvements generated successfully'
   })
   async improveSection(
     @Body() body: { section: any; type: string; targetRole?: string },
@@ -234,9 +234,9 @@ export class AiController {
       jobDescription: body.jobDescription,
       analysisType: 'keywords',
     };
-    
+
     const analysis = await this.aiService.analyzeResume(analyzeDto);
-    
+
     // Generate keyword optimization suggestions
     const suggestions = await this.aiService.generateResumeContent(
       `Optimize these keywords for better ATS performance: ${JSON.stringify(analysis.data.keywords)}`,
@@ -302,29 +302,13 @@ export class AiController {
   @ApiOperation({ summary: 'Analyze multiple resumes in batch' })
   @ApiResponse({ status: 200, description: 'Batch analysis completed' })
   async batchAnalyze(
-    @Body() body: {     // Add this to your existing resumes.controller.ts
-    @Post('export')
-    @ApiOperation({ summary: 'Export resume in specified format' })
-    async exportResume(
-      @Body() exportDto: ExportResumeDto,
-      @Res() res: Response,
-    ) {
-      const result = await this.exportService.exportResume(exportDto);
-      
-      res.set({
-        'Content-Type': result.mimeType,
-        'Content-Disposition': `attachment; filename="${result.filename}"`,
-        'Content-Length': result.buffer.length,
-      });
-      
-      res.send(result.buffer);
-    }resumes: string[]; jobDescription?: string },
+    @Body() body: { resumes: string[]; jobDescription?: string },
     @CurrentUser('id') userId: string,
   ) {
     const { resumes, jobDescription } = body;
-    
+
     const analyses = await Promise.all(
-      resumes.map(resumeText => 
+      resumes.map(resumeText =>
         this.aiService.analyzeResume({
           resumeText,
           jobDescription,
