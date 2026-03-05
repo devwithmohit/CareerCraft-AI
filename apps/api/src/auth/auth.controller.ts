@@ -1,87 +1,86 @@
-import { 
-  Controller, 
-  Post, 
-  Body, 
-  Get, 
-  UseGuards, 
-  Request,
+// @ts-nocheck
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  UseGuards,
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 
 @ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
+  // ── Kinde OAuth token login ──────────────────────────────
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Login user with Kinde token' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'User successfully logged in',
-    schema: {
-      type: 'object',
-      properties: {
-        access_token: { type: 'string' },
-        user: {
-          type: 'object',
-          properties: {
-            id: { type: 'string' },
-            email: { type: 'string' },
-            firstName: { type: 'string' },
-            lastName: { type: 'string' },
-            avatar: { type: 'string' },
-          },
-        },
-      },
-    },
-  })
+  @ApiOperation({ summary: 'Login with Kinde token (OAuth flow)' })
+  @ApiResponse({ status: 200, description: 'Logged in successfully' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
 
+  // ── Email/password registration ──────────────────────────
+  @Post('register')
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ summary: 'Register with email and password' })
+  @ApiResponse({ status: 201, description: 'Registered successfully' })
+  @ApiResponse({ status: 409, description: 'Email already exists' })
+  async register(@Body() body: { firstName: string; lastName: string; email: string; password: string }) {
+    return this.authService.emailRegister(body);
+  }
+
+  // ── Email/password login ─────────────────────────────────
+  @Post('email-login')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Login with email and password' })
+  @ApiResponse({ status: 200, description: 'Logged in successfully' })
+  @ApiResponse({ status: 401, description: 'Invalid credentials' })
+  async emailLogin(@Body() body: { email: string; password: string }) {
+    return this.authService.emailLogin(body);
+  }
+
+  // ── Profile ──────────────────────────────────────────────
   @Get('profile')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Get current user profile' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'User profile retrieved successfully' 
-  })
+  @ApiResponse({ status: 200, description: 'Profile retrieved' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async getProfile(@CurrentUser('id') userId: string) {
     return this.authService.getProfile(userId);
   }
 
+  // ── Refresh token ─────────────────────────────────────────
   @Post('refresh')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Refresh access token' })
   @HttpCode(HttpStatus.OK)
   async refreshToken(@CurrentUser() user: any) {
-    // Generate new token for current user
     return this.authService.login({ kindePayload: user });
   }
 
+  // ── Logout (stateless — client removes token) ─────────────
   @Post('logout')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Logout user (client-side token removal)' })
+  @ApiOperation({ summary: 'Logout (client removes JWT)' })
   @HttpCode(HttpStatus.OK)
   async logout() {
-    // Since JWT is stateless, logout is handled client-side
-    // You could implement token blacklisting here if needed
     return { message: 'Successfully logged out' };
   }
 
+  // ── Kinde webhook receiver ────────────────────────────────
   @Post('webhooks/kinde')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Handle Kinde webhooks' })

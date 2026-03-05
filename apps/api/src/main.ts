@@ -9,6 +9,11 @@ const helmet = require("helmet");
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Global API prefix — frontend calls /api/*
+  app.setGlobalPrefix('api', {
+    exclude: ['/', '/status', '/version', '/docs', '/docs/*path'],
+  });
+
   // Security
   app.use(typeof helmet === 'function' ? helmet() : helmet.default());
   app.use(typeof compression === 'function' ? compression() : compression.default());

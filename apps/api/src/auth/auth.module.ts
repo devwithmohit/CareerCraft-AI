@@ -7,11 +7,13 @@ import { AuthService } from './auth.service';
 import { JwtStrategy, KindeStrategy } from './kinde.strategy';
 import { AuthGuard } from './auth.guard';
 import { UsersModule } from '../users/users.module';
+import { DatabaseModule } from '../database/database.module';
 
 @Module({
   imports: [
     UsersModule,
-    PassportModule.register({ 
+    DatabaseModule,
+    PassportModule.register({
       defaultStrategy: 'jwt',
       session: false,
     }),
@@ -19,7 +21,7 @@ import { UsersModule } from '../users/users.module';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get('auth.jwtSecret'),
-        signOptions: { 
+        signOptions: {
           expiresIn: configService.get('auth.jwtExpiresIn'),
           algorithm: 'HS256',
         },
@@ -43,4 +45,4 @@ import { UsersModule } from '../users/users.module';
     PassportModule,
   ],
 })
-export class AuthModule {}
+export class AuthModule { }

@@ -1,5 +1,12 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { toast } from 'sonner';
+
+// Augment axios config to allow metadata
+declare module 'axios' {
+  interface InternalAxiosRequestConfig {
+    metadata?: { startTime: number };
+  }
+}
 
 // Types for API responses
 export interface ApiResponse<T = any> {
@@ -33,7 +40,7 @@ class ApiClient {
 
   constructor(config?: Partial<ApiClientConfig>) {
     this.config = {
-      baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
+      baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
       timeout: 30000, // 30 seconds
       retries: 3,
       retryDelay: 1000,
@@ -128,15 +135,15 @@ class ApiClient {
         // Handle 429 Too Many Requests
         if (status === 429) {
           toast.error('Too many requests. Please wait a moment before trying again.');
-          
+
           // Implement exponential backoff
           const retryAfter = error.response.headers['retry-after'] || this.config.retryDelay;
           await this.delay(parseInt(retryAfter) * 1000);
-          
+
           if (!originalRequest._retryCount) {
             originalRequest._retryCount = 0;
           }
-          
+
           if (originalRequest._retryCount < this.config.retries) {
             originalRequest._retryCount++;
             return this.client(originalRequest);
@@ -146,12 +153,12 @@ class ApiClient {
         // Handle 500+ Server Errors
         if (status >= 500) {
           toast.error('Server error. Please try again later.');
-          
+
           // Retry logic for server errors
           if (!originalRequest._retryCount) {
             originalRequest._retryCount = 0;
           }
-          
+
           if (originalRequest._retryCount < this.config.retries) {
             originalRequest._retryCount++;
             await this.delay(this.config.retryDelay * Math.pow(2, originalRequest._retryCount));
@@ -202,11 +209,11 @@ class ApiClient {
 
   private async refreshAuthToken(): Promise<string | null> {
     if (this.refreshPromise) {
-      return this.refreshPromise;
+      return this.refreshPromise as unknown as Promise<string | null>;
     }
 
-    this.refreshPromise = this.performTokenRefresh();
-    
+    this.refreshPromise = this.performTokenRefresh() as unknown as Promise<string>;
+
     try {
       const newToken = await this.refreshPromise;
       return newToken;
@@ -228,7 +235,7 @@ class ApiClient {
 
       const { accessToken } = response.data;
       this.setAuthToken(accessToken);
-      
+
       return accessToken;
     } catch (error) {
       console.error('Token refresh failed:', error);
@@ -245,7 +252,7 @@ class ApiClient {
 
   private handleAuthError() {
     this.clearAuth();
-    
+
     // Redirect to login page
     if (typeof window !== 'undefined') {
       window.location.href = '/auth/login';
@@ -276,38 +283,38 @@ class ApiClient {
 
   // HTTP Methods
   public async get<T = any>(
-    url: string, 
+    url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     return this.client.get<T>(url, config);
   }
 
   public async post<T = any>(
-    url: string, 
-    data?: any, 
+    url: string,
+    data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     return this.client.post<T>(url, data, config);
   }
 
   public async put<T = any>(
-    url: string, 
-    data?: any, 
+    url: string,
+    data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     return this.client.put<T>(url, data, config);
   }
 
   public async patch<T = any>(
-    url: string, 
-    data?: any, 
+    url: string,
+    data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     return this.client.patch<T>(url, data, config);
   }
 
   public async delete<T = any>(
-    url: string, 
+    url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     return this.client.delete<T>(url, config);
@@ -321,7 +328,7 @@ class ApiClient {
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     const formData = file instanceof FormData ? file : new FormData();
-    
+
     if (file instanceof File) {
       formData.append('file', file);
     }
@@ -351,17 +358,17 @@ class ApiClient {
       const blob = new Blob([response.data]);
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
-      
+
       link.href = downloadUrl;
       link.download = filename || this.extractFilenameFromResponse(response) || 'download';
-      
+
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Clean up
       window.URL.revokeObjectURL(downloadUrl);
-      
+
       toast.success('File downloaded successfully');
     } catch (error) {
       console.error('Download failed:', error);
@@ -433,7 +440,7 @@ class ApiClient {
   // Configuration methods
   public updateConfig(newConfig: Partial<ApiClientConfig>) {
     this.config = { ...this.config, ...newConfig };
-    
+
     // Update axios instance
     this.client.defaults.baseURL = this.config.baseURL;
     this.client.defaults.timeout = this.config.timeout;
@@ -484,11 +491,11 @@ class ApiClient {
     timestamp: string;
   }> {
     const startTime = Date.now();
-    
+
     try {
       await this.healthCheck();
       const latency = Date.now() - startTime;
-      
+
       return {
         online: true,
         latency,
@@ -509,7 +516,7 @@ class ApiClient {
     reset?: Date;
   } {
     const headers = response.headers;
-    
+
     return {
       limit: headers['x-ratelimit-limit'] ? parseInt(headers['x-ratelimit-limit']) : undefined,
       remaining: headers['x-ratelimit-remaining'] ? parseInt(headers['x-ratelimit-remaining']) : undefined,
@@ -529,8 +536,7 @@ if (process.env.NODE_ENV === 'development') {
 export { apiClient };
 export default apiClient;
 
-// Export types for use in other files
-export type { ApiResponse, ApiError, ApiClientConfig };
+// Export types for use in other files (interfaces already exported above)
 
 // Utility functions
 export const createApiClient = (config?: Partial<ApiClientConfig>) => {
@@ -548,7 +554,7 @@ export const withLogging = <T extends (...args: any[]) => Promise<any>>(
 ): T => {
   return (async (...args: any[]) => {
     const startTime = Date.now();
-    
+
     try {
       console.log(`[${context}] Starting API call...`);
       const result = await apiMethod(...args);
@@ -566,7 +572,7 @@ export const withLogging = <T extends (...args: any[]) => Promise<any>>(
 // Environment-specific configurations
 export const getApiConfig = (): Partial<ApiClientConfig> => {
   const env = process.env.NODE_ENV;
-  
+
   switch (env) {
     case 'production':
       return {
@@ -575,7 +581,7 @@ export const getApiConfig = (): Partial<ApiClientConfig> => {
         retries: 3,
         retryDelay: 1000,
       };
-    case 'staging':
+    case 'test':
       return {
         baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://staging-api.careercraft.ai',
         timeout: 30000,
@@ -584,7 +590,7 @@ export const getApiConfig = (): Partial<ApiClientConfig> => {
       };
     default: // development
       return {
-        baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
+        baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
         timeout: 60000,
         retries: 1,
         retryDelay: 1000,

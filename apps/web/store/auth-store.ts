@@ -73,11 +73,10 @@ export const useAuthStore = create<AuthState>()(
           set({ isLoading: true, error: null });
 
           try {
-            const response = await fetch('/api/auth/login', {
+            const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/auth/email-login`, {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email, password }),
             });
 
@@ -86,29 +85,24 @@ export const useAuthStore = create<AuthState>()(
               throw new Error(errorData.message || 'Login failed');
             }
 
-            const { user, accessToken, refreshToken } = await response.json();
+            const data = await response.json();
+            const accessToken = data.access_token;
+            const user = data.user;
 
             set({
               user,
               isAuthenticated: true,
               token: accessToken,
-              refreshToken,
+              refreshToken: null,
               isLoading: false,
               error: null,
             });
 
-            // Store tokens in localStorage for API client
             if (typeof window !== 'undefined') {
               localStorage.setItem('auth_token', accessToken);
-              localStorage.setItem('refresh_token', refreshToken);
             }
           } catch (error: any) {
-            set({
-              isLoading: false,
-              error: error.message || 'Login failed',
-              isAuthenticated: false,
-              user: null,
-            });
+            set({ isLoading: false, error: error.message || 'Login failed', isAuthenticated: false, user: null });
             throw error;
           }
         },
@@ -117,11 +111,10 @@ export const useAuthStore = create<AuthState>()(
           set({ isLoading: true, error: null });
 
           try {
-            const response = await fetch('/api/auth/register', {
+            const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+            const response = await fetch(`${apiBase}/api/auth/register`, {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),
             });
 
@@ -130,57 +123,41 @@ export const useAuthStore = create<AuthState>()(
               throw new Error(errorData.message || 'Registration failed');
             }
 
-            const { user, accessToken, refreshToken } = await response.json();
+            const result = await response.json();
+            const accessToken = result.access_token;
+            const user = result.user;
 
             set({
               user,
               isAuthenticated: true,
               token: accessToken,
-              refreshToken,
+              refreshToken: null,
               isLoading: false,
               error: null,
             });
 
-            // Store tokens in localStorage for API client
             if (typeof window !== 'undefined') {
               localStorage.setItem('auth_token', accessToken);
-              localStorage.setItem('refresh_token', refreshToken);
             }
           } catch (error: any) {
-            set({
-              isLoading: false,
-              error: error.message || 'Registration failed',
-              isAuthenticated: false,
-              user: null,
-            });
+            set({ isLoading: false, error: error.message || 'Registration failed', isAuthenticated: false, user: null });
             throw error;
           }
         },
 
         logout: () => {
-          // Clear tokens from localStorage
           if (typeof window !== 'undefined') {
             localStorage.removeItem('auth_token');
             localStorage.removeItem('refresh_token');
           }
 
-          // Make logout API call (fire and forget)
-          fetch('/api/auth/logout', {
+          const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+          fetch(`${apiBase}/api/auth/logout`, {
             method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${get().token}`,
-            },
-          }).catch(() => {
-            // Ignore errors during logout
-          });
+            headers: { 'Authorization': `Bearer ${get().token}` },
+          }).catch(() => { });
 
-          set({
-            user: null,
-            isAuthenticated: false,
-            token: null,
-            refreshToken: null,
-            error: null,
-          });
+          set({ user: null, isAuthenticated: false, token: null, refreshToken: null, error: null });
         },
 
         refreshAuth: async () => {
@@ -273,13 +250,14 @@ export const useAuthStore = create<AuthState>()(
           const updatedUser = {
             ...user,
             preferences: {
-              ...user.preferences,
-              ...preferences,
+              theme: (preferences?.theme ?? user.preferences?.theme ?? 'system') as 'light' | 'dark' | 'system',
+              notifications: preferences?.notifications ?? user.preferences?.notifications ?? true,
+              language: preferences?.language ?? user.preferences?.language ?? 'en',
             },
             updatedAt: new Date().toISOString(),
           };
 
-          set({ user: updatedUser });
+          set({ user: updatedUser as typeof user });
 
           // Sync with backend
           fetch('/api/users/preferences', {
